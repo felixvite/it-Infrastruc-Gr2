@@ -35,12 +35,7 @@ class FlightDataSchema(Schema):
     distance = fields.Str()
 
 
-@app.route('/')
-def root():
-    return redirect('/docs')
-
-
-@app.route('/price/', methods=['GET'])
+@app.route('/price', methods=['GET'])
 @app.input(PriceQuery, location='query')
 @app.output(PriceOut, 200)
 @app.doc(summary='Return insurance price',
@@ -85,19 +80,21 @@ def price_calculation(location, date):
     return price_dict
 
 
-@app.route('/get_flight_data/', methods=['GET'])
+@app.route('/get_flight_data', methods=['GET'])
 @app.output(FlightDataSchema, 200)
 @app.doc(summary='Returns actual flight data',
          description='Returns actual flight data from imaginary API landing location, time and distance.',
          responses=[204, 400, 404])
+
 def get_flight_data():
     flightdata_dict = {'flightNo': "#99999",
-                       'Airline': "TestAirline",
+                       'airline': "TestAirline",
                        'planeNo': "12345TEA",
-                       'Departure': "Berlin",
-                       'Arrival': "London",
+                       'departure': "Berlin",
+                       'arrival': "London",
                        'time': "12:00",
                        'distance': "932,08 km"}
+
     return flightdata_dict, 200
 
 
