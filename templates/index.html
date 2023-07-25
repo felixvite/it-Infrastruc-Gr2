@@ -1,45 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>Apple Count</title>
-  <style>
-    .box {
-      width: 400px;
-      height: 200px;
-      background-color: lightyellow;
-      border: 1px solid black;
-      padding: 20px;
-    }
-  </style>
-</head>
+  <title>Q-Perior - EAH-Jena API Documentation</title>
+  </head>
 <body>
-  <div class="box">
-    <h1>Apple Count</h1>
-    <p>Number of Apples: <span id="appleCount">0</span></p>
-  </div>
-
-  <script>
-    // Function to make the API request and update the apple count
-    function fetchAppleCount() {
-      // Replace "API_URL" with the actual URL of your API endpoint
-      fetch("API_URL")
-        .then(response => response.json())
-        .then(data => {
-          // Update the count and color based on the API response
-          document.getElementById("appleCount").textContent = data.count;
-          document.querySelector(".box").style.backgroundColor = data.color;
-        })
-        .catch(error => {
-          console.error("An error occurred:", error);
-        });
-    }
-
-    // Initial fetch
-    fetchAppleCount();
-
-    // Fetch the apple count every 2 minutes
-    setInterval(fetchAppleCount, 10000); // 2 minutes in milliseconds
-  </script>
 </body>
 </html>
 
