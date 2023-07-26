@@ -1,0 +1,347 @@
+code,time_zone_id,country_id,elevation,county,state,latitude,longitude
+GNV,America/New_York,US,104,Alachua County,Florida,-82.3,29.7
+MSP,America/Chicago,US,803,Hennepin County,Minnesota,-93.2,44.9
+DTW,America/Detroit,US,636,Wayne County,Michigan,-83.4,42.2
+TLH,America/New_York,US,81,Leon County,Florida,-84.4,30.4
+ATL,America/New_York,US,1049,none,none,-84.4,33.6
+DAY,America/New_York,US,1010,Montgomery County,Ohio,-84.2,39.9
+JAN,America/Chicago,US,298,Rankin County,Mississippi,-90.1,32.3
+LGA,America/New_York,US,21,Bronx,New York,-73.9,40.8
+JAX,America/New_York,US,19,Nassau County,Florida,-81.7,30.5
+BMI,America/Chicago,US,921,McLean County,Illinois,-88.9,40.5
+CAK,America/New_York,US,1171,Summit County,Ohio,-81.4,40.9
+PHL,America/New_York,US,26,Delaware County,Pennsylvania,-75.2,39.9
+JFK,America/New_York,US,45,Nassau County,New York,-73.8,40.6
+AGS,America/New_York,US,101,none,none,-82.0,33.4
+LIT,America/Chicago,US,262,Pulaski County,Arkansas,-92.2,34.7
+IND,America/Indiana/Indianapolis,US,797,Marion County,Indiana,-86.3,39.7
+EYW,America/New_York,US,16,Monroe County,Florida,-81.8,24.6
+CAE,America/New_York,US,183,none,none,-81.1,33.9
+CWA,America/Chicago,US,1236,Marathon County,Wisconsin,-89.7,44.8
+TRI,America/New_York,US,1519,Washington County,Tennessee,-82.4,36.5
+BOS,America/New_York,US,29,Suffolk County,Massachusetts,-71.0,42.4
+MGM,America/Chicago,US,121,none,none,-86.4,32.3
+MDT,America/New_York,US,275,Dauphin County,Pennsylvania,-76.8,40.2
+MKE,America/Chicago,US,679,Milwaukee County,Wisconsin,-87.9,42.9
+TVC,America/Detroit,US,624,Grand Traverse County,Michigan,-85.6,44.7
+FSM,America/Chicago,US,436,Sebastian County,Arkansas,-94.4,35.3
+BHM,America/Chicago,US,603,Jefferson County,Alabama,-86.8,33.6
+PIA,America/Chicago,US,666,Peoria County,Illinois,-89.7,40.7
+CVG,America/New_York,US,866,Boone County,Kentucky,-84.7,39.1
+GTR,America/Chicago,US,200,Clay County,Mississippi,-88.6,33.5
+SDF,America/Kentucky/Louisville,US,518,Jefferson County,Kentucky,-85.7,38.2
+BNA,America/Chicago,US,583,Davidson County,Tennessee,-86.7,36.1
+SAT,America/Chicago,US,708,Bexar County,Texas,-98.5,29.5
+LFT,America/Chicago,US,42,Lafayette Parish,Louisiana,-92.0,30.2
+MSN,America/Chicago,US,846,Dane County,Wisconsin,-89.3,43.1
+DSM,America/Chicago,US,941,Warren County,Iowa,-93.7,41.5
+EVV,America/Chicago,US,377,Vanderburgh County,Indiana,-87.5,38.0
+ABE,America/New_York,US,374,Lehigh County,Pennsylvania,-75.4,40.7
+DCA,America/New_York,US,52,none,none,-77.0,38.9
+BWI,America/New_York,US,170,Anne Arundel County,Maryland,-76.7,39.2
+ILM,America/New_York,US,49,New Hanover County,North Carolina,-77.9,34.3
+TYS,America/New_York,US,981,Blount County,Tennessee,-84.0,35.8
+LEX,America/New_York,US,979,Fayette County,Kentucky,-84.6,38.0
+CLE,America/New_York,US,761,Cuyahoga County,Ohio,-81.9,41.4
+ELM,America/New_York,US,908,Chemung County,New York,-76.9,42.2
+EWN,America/New_York,US,29,Craven County,North Carolina,-77.0,35.1
+PHF,America/New_York,US,42,York County,Virginia,-76.5,37.1
+SHV,America/Chicago,US,252,Caddo Parish,Louisiana,-93.8,32.4
+CSG,America/New_York,US,252,none,none,-85.0,32.5
+TUL,America/Chicago,US,677,Tulsa County,Oklahoma,-95.9,36.2
+BDL,America/New_York,US,173,Hartford County,Connecticut,-72.7,41.9
+DFW,America/Chicago,US,574,Tarrant County,Texas,-97.0,32.9
+RIC,America/New_York,US,114,Henrico County,Virginia,-77.3,37.5
+RAP,America/Denver,US,3120,Pennington County,South Dakota,-103.1,44.0
+PIT,America/New_York,US,1125,Allegheny County,Pennsylvania,-80.2,40.5
+CRW,America/New_York,US,944,Kanawha County,West Virginia,-81.6,38.4
+GPT,America/Chicago,US,29,Harrison County,Mississippi,-89.1,30.4
+CHA,America/New_York,US,675,Hamilton County,Tennessee,-85.2,35.0
+OMA,America/Chicago,US,994,Pottawattamie County,Iowa,-95.9,41.3
+IAD,America/New_York,US,298,Fairfax County,Virginia,-77.5,39.0
+RDU,America/New_York,US,410,Wake County,North Carolina,-78.8,35.9
+SAV,America/New_York,US,32,Chatham County,Georgia,-81.2,32.1
+GRR,America/Detroit,US,784,Kent County,Michigan,-85.5,42.9
+BTV,America/New_York,US,305,Chittenden County,Vermont,-73.2,44.5
+LAN,America/Detroit,US,861,Ingham County,Michigan,-84.6,42.8
+OAJ,America/New_York,US,101,Onslow County,North Carolina,-77.6,34.8
+AEX,America/Chicago,US,65,Rapides Parish,Louisiana,-92.5,31.3
+CHO,America/New_York,US,613,Albemarle County,Virginia,-78.5,38.1
+CHS,America/New_York,US,42,Berkeley County,South Carolina,-80.0,32.9
+HRL,America/Chicago,US,29,Cameron County,Texas,-97.7,26.2
+ORF,America/New_York,US,42,City of Norfolk,Virginia,-76.2,36.9
+MOT,America/Chicago,US,1679,Ward County,North Dakota,-101.3,48.3
+HSV,America/Chicago,US,583,Madison County,Alabama,-86.8,34.6
+MCO,America/New_York,US,82,Orange County,Florida,-81.3,28.4
+BTR,America/Chicago,US,82,East Baton Rouge Parish,Louisiana,-91.2,30.5
+LAX,America/Los_Angeles,US,125,Los Angeles County,California,-118.4,33.9
+ORD,America/Chicago,US,639,Cook County,Illinois,-87.9,42.0
+PHX,America/Phoenix,US,1112,Maricopa County,Arizona,-112.0,33.4
+MIA,America/New_York,US,45,Miami-Dade County,Florida,-80.3,25.8
+CMH,America/New_York,US,803,Franklin County,Ohio,-82.9,40.0
+SFO,America/Los_Angeles,US,26,San Mateo County,California,-122.4,37.6
+SEA,America/Los_Angeles,US,206,King County,Washington,-122.3,47.4
+STL,America/Chicago,US,524,Saint Louis County,Missouri,-90.4,38.7
+CLT,America/New_York,US,685,none,none,-80.9,35.2
+LAS,America/Los_Angeles,US,2181,none,none,-115.2,36.1
+OAK,America/Los_Angeles,US,26,Alameda County,California,-122.2,37.7
+BUF,America/New_York,US,698,Erie County,New York,-78.7,42.9
+FLL,America/New_York,US,45,none,none,-80.2,26.1
+SJU,America/Puerto_Rico,PR,36,none,Carolina,-66.0,18.4
+ALB,America/New_York,US,301,Albany County,New York,-73.8,42.7
+PWM,America/New_York,US,42,Cumberland County,Maine,-70.3,43.6
+SMF,America/Los_Angeles,US,42,Yolo County,California,-121.6,38.7
+MHT,America/New_York,US,203,Hillsborough County,New Hampshire,-71.4,42.9
+TPA,America/New_York,US,26,Hillsborough County,Florida,-82.5,28.0
+EGE,America/Denver,US,6525,Eagle County,Colorado,-106.9,39.6
+OGG,Pacific/Honolulu,US,114,Maui County,Hawaii,-156.4,20.9
+HNL,Pacific/Honolulu,US,45,Honolulu County,Hawaii,-157.9,21.3
+MSY,America/Chicago,US,36,Jefferson Parish,Louisiana,-90.3,30.0
+IAH,America/Chicago,US,88,none,none,-95.3,30.0
+KOA,Pacific/Honolulu,US,47,none,none,-156.0,19.7
+DEN,America/Denver,US,5347,Weld County,Colorado,-104.7,39.9
+SAN,America/Los_Angeles,US,13,San Diego County,California,-117.2,32.7
+TUS,America/Phoenix,US,2643,Pima County,Arizona,-110.9,32.1
+SJC,America/Los_Angeles,US,55,Santa Clara County,California,-121.9,37.4
+PBI,America/New_York,US,32,Palm Beach County,Florida,-80.1,26.7
+SNA,America/Los_Angeles,US,45,Orange County,California,-117.9,33.7
+GRI,America/Chicago,US,1856,Hall County,Nebraska,-98.3,41.0
+SLC,America/Denver,US,4209,Salt Lake County,Utah,-112.0,40.8
+FAT,America/Los_Angeles,US,285,Fresno County,California,-119.7,36.8
+EWR,America/New_York,US,49,Union County,New Jersey,-74.2,40.7
+JAC,America/Denver,US,6469,Teton County,Wyoming,-110.7,43.6
+MCI,America/Chicago,US,977,Platte County,Missouri,-94.7,39.3
+PNS,America/Chicago,US,75,Escambia County,Florida,-87.2,30.5
+ELP,America/Denver,US,3963,El Paso County,Texas,-106.4,31.8
+AUS,America/Chicago,US,505,Travis County,Texas,-97.7,30.2
+ABQ,America/Denver,US,5308,Bernalillo County,New Mexico,-106.6,35.0
+PSP,America/Los_Angeles,US,459,Riverside County,California,-116.5,33.8
+MEM,America/Chicago,US,275,De Soto County,Mississippi,-90.0,35.0
+PDX,America/Los_Angeles,US,39,Clark County,Washington,-122.6,45.6
+ACT,America/Chicago,US,498,McLennan County,Texas,-97.2,31.6
+ABI,America/Chicago,US,1791,none,none,-99.7,32.4
+DRT,America/Chicago,US,941,none,Coahuila,-101.0,29.3
+GSO,America/New_York,US,889,Guilford County,North Carolina,-79.9,36.1
+BIL,America/Denver,US,3569,Yellowstone County,Montana,-108.5,45.8
+AVP,America/New_York,US,921,Luzerne County,Pennsylvania,-75.7,41.3
+CLL,America/Chicago,US,288,Brazos County,Texas,-96.4,30.6
+CID,America/Chicago,US,898,Linn County,Iowa,-91.7,41.9
+CRP,America/Chicago,US,55,none,none,-97.5,27.8
+GRK,America/Chicago,US,895,Bell County,Texas,-97.8,31.1
+AZO,America/Detroit,US,803,Kalamazoo County,Michigan,-85.6,42.2
+TYR,America/Chicago,US,544,Henderson County,Texas,-95.4,32.4
+FAR,America/Chicago,US,813,Clay County,Minnesota,-96.8,46.9
+GSP,America/New_York,US,948,Greenville County,South Carolina,-82.2,34.9
+MFE,America/Chicago,US,85,Hidalgo County,Texas,-98.2,26.2
+AMA,America/Chicago,US,3605,none,none,-101.7,35.2
+SWO,America/Chicago,US,954,Payne County,Oklahoma,-97.1,36.2
+MTJ,America/Denver,US,5659,Montrose County,Colorado,-107.9,38.5
+LAW,America/Chicago,US,1110,Comanche County,Oklahoma,-98.4,34.6
+XNA,America/Chicago,US,1253,Benton County,Arkansas,-94.3,36.3
+CMI,America/Chicago,US,721,Champaign County,Illinois,-88.3,40.0
+MHK,America/Chicago,US,1046,Riley County,Kansas,-96.7,39.1
+SGF,America/Chicago,US,1289,Greene County,Missouri,-93.4,37.2
+AVL,America/New_York,US,2119,Henderson County,North Carolina,-82.5,35.4
+AZA,America/Phoenix,US,1309,Maricopa County,Arizona,-111.7,33.3
+PGD,America/New_York,US,22,Charlotte County,Florida,-82.0,26.9
+SFB,America/New_York,US,55,Seminole County,Florida,-81.2,28.8
+SRQ,America/New_York,US,32,Manatee County,Florida,-82.6,27.4
+PIE,America/New_York,US,49,Pinellas County,Florida,-82.7,27.9
+BLV,America/Chicago,US,456,Saint Clair County,Illinois,-89.9,38.7
+PBG,America/New_York,US,206,Clinton County,New York,-73.5,44.7
+BLI,America/Los_Angeles,US,118,Whatcom County,Washington,-122.5,48.8
+USA,America/New_York,US,705,Cabarrus County,North Carolina,-80.7,35.4
+SBN,America/Indiana/Indianapolis,US,761,Saint Joseph County,Indiana,-86.3,41.7
+BGR,America/New_York,US,131,Penobscot County,Maine,-68.8,44.8
+FNT,America/Detroit,US,777,Genesee County,Michigan,-83.7,43.0
+IAG,America/New_York,US,570,Niagara County,New York,-79.0,43.1
+IDA,America/Boise,US,4734,Bonneville County,Idaho,-112.1,43.5
+BIS,America/Chicago,US,1607,Burleigh County,North Dakota,-100.7,46.8
+GFK,America/Chicago,US,823,Grand Forks County,North Dakota,-97.2,47.9
+PVD,America/New_York,US,72,Kent County,Rhode Island,-71.4,41.7
+MLB,America/New_York,US,49,Brevard County,Florida,-80.6,28.1
+TOL,America/New_York,US,683,Lucas County,Ohio,-83.8,41.6
+MYR,America/New_York,US,26,Horry County,South Carolina,-78.9,33.7
+MOB,America/Chicago,US,219,Mobile County,Alabama,-88.2,30.7
+HPN,America/New_York,US,387,Westchester County,New York,-73.7,41.1
+FAY,America/New_York,US,206,Cumberland County,North Carolina,-78.9,35.0
+SYR,America/New_York,US,413,Onondaga County,New York,-76.1,43.1
+ART,America/New_York,US,275,Jefferson County,New York,-76.0,44.0
+HVN,America/New_York,US,26,New Haven County,Connecticut,-72.9,41.3
+LGB,America/Los_Angeles,US,60,Los Angeles County,California,-118.2,33.8
+RNO,America/Los_Angeles,US,4419,Washoe County,Nevada,-119.8,39.5
+RSW,America/New_York,US,32,Lee County,Florida,-81.8,26.5
+ROC,America/New_York,US,508,none,none,-77.7,43.1
+HOU,America/Chicago,US,49,none,none,-95.3,29.6
+STX,America/St_Thomas,VI,39,none,Saint Croix Island,-64.8,17.7
+ONT,America/Los_Angeles,US,889,San Bernardino County,California,-117.6,34.1
+BUR,America/Los_Angeles,US,682,Los Angeles County,California,-118.4,34.2
+SWF,America/New_York,US,449,Orange County,New York,-74.1,41.5
+DAB,America/New_York,US,29,Volusia County,Florida,-81.1,29.2
+BQN,America/Puerto_Rico,PR,223,none,Aguadilla,-67.1,18.5
+PSE,America/Puerto_Rico,PR,36,none,Juana Diaz,-66.6,18.0
+ORH,America/New_York,US,977,Worcester County,Massachusetts,-71.9,42.3
+STT,America/St_Thomas,VI,16,none,Saint Thomas Island,-65.0,18.3
+VPS,America/Chicago,US,98,Okaloosa County,Florida,-86.5,30.5
+ICT,America/Chicago,US,1338,Sedgwick County,Kansas,-97.4,37.7
+OKC,America/Chicago,US,1299,none,none,-97.6,35.4
+LBB,America/Chicago,US,3282,none,none,-101.8,33.7
+LRD,America/Chicago,US,465,Webb County,Texas,-99.5,27.5
+BRO,America/Chicago,US,36,Cameron County,Texas,-97.4,25.9
+HOB,America/Denver,US,3641,Lea County,New Mexico,-103.2,32.7
+SBA,America/Los_Angeles,US,16,Santa Barbara County,California,-119.8,34.4
+TTN,America/New_York,US,213,Mercer County,New Jersey,-74.8,40.3
+COS,America/Denver,US,6131,El Paso County,Colorado,-104.7,38.8
+PSM,America/New_York,US,131,Strafford County,New Hampshire,-70.9,43.2
+ISP,America/New_York,US,72,Suffolk County,New York,-73.1,40.8
+BZN,America/Denver,US,4442,Gallatin County,Montana,-111.2,45.8
+LIH,Pacific/Honolulu,US,153,Kauai County,Hawaii,-159.3,22.0
+ITO,Pacific/Honolulu,US,39,Hawaii County,Hawaii,-155.0,19.7
+ECP,America/Chicago,US,55,Bay County,Florida,-85.8,30.4
+HHH,America/New_York,US,104,Beaufort County,South Carolina,-80.7,32.2
+LBE,America/New_York,US,1199,Westmoreland County,Pennsylvania,-79.4,40.3
+ACY,America/New_York,US,55,Atlantic County,New Jersey,-74.6,39.5
+FLG,America/Phoenix,US,7004,Coconino County,Arizona,-111.7,35.1
+ASE,America/Denver,US,7762,Pitkin County,Colorado,-106.9,39.2
+HDN,America/Denver,US,6584,Routt County,Colorado,-107.2,40.5
+RDM,America/Los_Angeles,US,3054,Deschutes County,Oregon,-121.1,44.3
+YUM,America/Phoenix,US,213,Yuma County,Arizona,-114.6,32.7
+GRB,America/Chicago,US,679,Brown County,Wisconsin,-88.1,44.5
+GJT,America/Denver,US,4849,Mesa County,Colorado,-108.5,39.1
+FSD,America/Chicago,US,1430,Minnehaha County,South Dakota,-96.7,43.6
+FWA,America/Indiana/Indianapolis,US,790,Wells County,Indiana,-85.2,41.0
+ROW,America/Denver,US,3631,Chaves County,New Mexico,-104.5,33.3
+ATW,America/Chicago,US,859,Winnebago County,Wisconsin,-88.5,44.3
+BFL,America/Los_Angeles,US,479,Kern County,California,-119.1,35.4
+EUG,America/Los_Angeles,US,387,Lane County,Oregon,-123.2,44.1
+SAF,America/Denver,US,6299,Santa Fe County,New Mexico,-106.1,35.6
+MFR,America/Los_Angeles,US,1282,Jackson County,Oregon,-122.9,42.4
+JLN,America/Chicago,US,944,Jasper County,Missouri,-94.5,37.1
+SGU,America/Denver,US,2834,Washington County,Utah,-113.5,37.0
+CYS,America/Denver,US,6174,none,none,-104.8,41.2
+MEI,America/Chicago,US,278,Lauderdale County,Mississippi,-88.8,32.3
+PIB,America/Chicago,US,223,Forrest County,Mississippi,-89.3,31.5
+BOI,America/Boise,US,2860,Ada County,Idaho,-116.2,43.6
+DAL,America/Chicago,US,495,Dallas County,Texas,-96.8,32.8
+STS,America/Los_Angeles,US,131,Sonoma County,California,-122.8,38.5
+SBP,America/Los_Angeles,US,164,San Luis Obispo County,California,-120.6,35.2
+MRY,America/Los_Angeles,US,209,Monterey County,California,-121.8,36.6
+GEG,America/Los_Angeles,US,2342,Spokane County,Washington,-117.5,47.6
+RST,America/Chicago,US,1309,Olmsted County,Minnesota,-92.5,43.9
+VLD,America/New_York,US,167,Lowndes County,Georgia,-83.3,30.8
+MBS,America/Detroit,US,652,Saginaw County,Michigan,-84.1,43.5
+SUN,America/Boise,US,5249,Blaine County,Idaho,-114.3,43.5
+PSC,America/Los_Angeles,US,396,Franklin County,Washington,-119.1,46.3
+MLI,America/Chicago,US,564,Rock Island County,Illinois,-90.5,41.4
+FCA,America/Denver,US,2959,Flathead County,Montana,-114.3,48.3
+DLH,America/Chicago,US,1450,Saint Louis County,Minnesota,-92.2,46.8
+ERI,America/New_York,US,705,Erie County,Pennsylvania,-80.2,42.1
+DHN,America/Chicago,US,324,Dale County,Alabama,-85.4,31.3
+ABY,America/New_York,US,213,none,none,-84.2,31.5
+BQK,America/New_York,US,36,none,none,-81.5,31.2
+MDW,America/Chicago,US,603,Cook County,Illinois,-87.8,41.8
+GTF,America/Denver,US,3664,Cascade County,Montana,-111.4,47.5
+LSE,America/Chicago,US,587,La Crosse County,Wisconsin,-91.3,43.9
+ESC,America/Detroit,US,577,Delta County,Michigan,-87.1,45.7
+CPR,America/Denver,US,5328,Natrona County,Wyoming,-106.5,42.9
+SCE,America/New_York,US,1217,Centre County,Pennsylvania,-77.8,40.9
+HLN,America/Denver,US,3848,Lewis and Clark County,Montana,-112.0,46.6
+LNK,America/Chicago,US,1154,Lancaster County,Nebraska,-96.8,40.8
+ISN,America/Chicago,US,1886,none,none,-103.6,48.2
+MLU,America/Chicago,US,72,Ouachita Parish,Louisiana,-92.0,32.5
+MSO,America/Denver,US,3185,Missoula County,Montana,-114.1,46.9
+ROA,America/New_York,US,1138,Roanoke County,Virginia,-80.0,37.3
+CMX,America/Detroit,US,1007,Houghton County,Michigan,-88.5,47.2
+EAU,America/Chicago,US,895,Chippewa County,Wisconsin,-91.5,44.9
+LWB,America/New_York,US,2312,Greenbrier County,West Virginia,-80.4,37.9
+SHD,America/New_York,US,1190,Augusta County,Virginia,-78.9,38.3
+MKG,America/Detroit,US,613,Muskegon County,Michigan,-86.2,43.2
+HYS,America/Chicago,US,1965,Ellis County,Kansas,-99.3,38.8
+SLN,America/Chicago,US,1243,Saline County,Kansas,-97.7,38.8
+EAR,America/Chicago,US,2106,Buffalo County,Nebraska,-99.0,40.7
+UIN,America/Chicago,US,768,Adams County,Illinois,-91.2,39.9
+CKB,America/New_York,US,1148,Harrison County,West Virginia,-80.2,39.3
+RKS,America/Denver,US,6715,Sweetwater County,Wyoming,-109.1,41.6
+PUB,America/Denver,US,4675,Pueblo County,Colorado,-104.5,38.3
+PAH,America/Chicago,US,390,McCracken County,Kentucky,-88.8,37.1
+CGI,America/Chicago,US,351,Scott County,Missouri,-89.6,37.2
+VEL,America/Denver,US,5062,Uintah County,Utah,-109.5,40.4
+CNY,America/Denver,US,4507,Grand County,Utah,-109.7,38.8
+LBL,America/Chicago,US,2885,Seward County,Kansas,-101.0,37.0
+BFF,America/Denver,US,3959,Scotts Bluff County,Nebraska,-103.6,41.9
+SPI,America/Chicago,US,564,Sangamon County,Illinois,-89.7,39.8
+DVL,America/Chicago,US,1361,Ramsey County,North Dakota,-98.9,48.1
+JMS,America/Chicago,US,1473,Stutsman County,North Dakota,-98.7,46.9
+LAR,America/Denver,US,7284,Albany County,Wyoming,-105.7,41.3
+PRC,America/Phoenix,US,5022,Yavapai County,Arizona,-112.4,34.6
+GCC,America/Denver,US,4324,Campbell County,Wyoming,-105.5,44.3
+LBF,America/Chicago,US,2777,Lincoln County,Nebraska,-100.7,41.1
+ACV,America/Los_Angeles,US,147,Humboldt County,California,-124.1,41.0
+RDD,America/Los_Angeles,US,485,Shasta County,California,-122.3,40.5
+OTH,America/Los_Angeles,US,19,Coos County,Oregon,-124.2,43.4
+MMH,America/Los_Angeles,US,7103,Mono County,California,-118.8,37.6
+MAF,America/Chicago,US,2834,none,none,-102.2,31.9
+COD,America/Denver,US,5088,Park County,Wyoming,-109.0,44.5
+LWS,America/Los_Angeles,US,1443,Nez Perce County,Idaho,-117.0,46.4
+PIH,America/Boise,US,4442,Bannock County,Idaho,-112.6,42.9
+MQT,America/Detroit,US,1204,Marquette County,Michigan,-87.4,46.3
+ABR,America/Chicago,US,1289,Brown County,South Dakota,-98.4,45.5
+APN,America/Detroit,US,708,Alpena County,Michigan,-83.6,45.1
+PLN,America/Detroit,US,698,Cheboygan County,Michigan,-84.8,45.6
+BJI,America/Chicago,US,1407,Beltrami County,Minnesota,-94.9,47.5
+BRD,America/Chicago,US,1233,Crow Wing County,Minnesota,-94.1,46.4
+BTM,America/Denver,US,5475,Silver Bow County,Montana,-112.5,46.0
+CDC,America/Denver,US,5636,Iron County,Utah,-113.1,37.7
+CIU,America/Detroit,US,606,none,none,-84.3,46.5
+EKO,America/Los_Angeles,US,5032,Elko County,Nevada,-115.8,40.8
+IMT,America/Menominee,US,1233,Dickinson County,Michigan,-88.1,45.8
+TWF,America/Boise,US,4154,Twin Falls County,Idaho,-114.5,42.5
+HIB,America/Chicago,US,1345,Saint Louis County,Minnesota,-92.8,47.4
+RHI,America/Chicago,US,1584,Oneida County,Wisconsin,-89.5,45.6
+BGM,America/New_York,US,1587,Broome County,New York,-76.0,42.2
+ITH,America/New_York,US,1056,Tompkins County,New York,-76.5,42.5
+INL,America/Chicago,US,1164,none,Ontario,-93.4,48.6
+SJT,America/Chicago,US,1906,Tom Green County,Texas,-100.5,31.4
+GGG,America/Chicago,US,344,Gregg County,Texas,-94.7,32.4
+SUX,America/Chicago,US,1026,Woodbury County,Iowa,-96.4,42.4
+TXK,America/Chicago,US,390,Miller County,Arkansas,-94.0,33.5
+ALO,America/Chicago,US,872,Black Hawk County,Iowa,-92.4,42.6
+DBQ,America/Chicago,US,1066,Dubuque County,Iowa,-90.7,42.4
+ADQ,America/Anchorage,US,45,none,none,-152.5,57.8
+ANC,America/Anchorage,US,62,none,none,-150.0,61.2
+BET,America/Anchorage,US,111,none,none,-161.8,60.8
+BRW,America/Anchorage,US,22,none,none,-156.8,71.3
+SCC,America/Anchorage,US,68,none,none,-148.5,70.2
+FAI,America/Anchorage,US,442,none,none,-147.9,64.8
+KTN,America/Sitka,US,89,none,none,-131.7,55.4
+JNU,America/Juneau,US,21,none,Alaska,-134.6,58.4
+SIT,America/Sitka,US,55,none,none,-135.2,57.0
+WRG,America/Anchorage,US,36,none,none,-132.4,56.5
+PSG,America/Anchorage,US,75,none,none,-132.9,56.8
+OME,America/Nome,US,16,none,none,-165.5,64.5
+OTZ,America/Nome,US,29,none,none,-162.6,66.9
+LCH,America/Chicago,US,15,Calcasieu Parish,Louisiana,-93.2,30.1
+LCK,America/New_York,US,744,Franklin County,Ohio,-82.9,39.8
+HTS,America/New_York,US,800,Wayne County,West Virginia,-82.6,38.4
+GUC,America/Denver,US,7604,Gunnison County,Colorado,-106.9,38.5
+SPS,America/Chicago,US,987,Wichita County,Texas,-98.5,34.0
+COU,America/Chicago,US,862,Boone County,Missouri,-92.2,38.8
+BPT,America/Chicago,US,22,Jefferson County,Texas,-94.0,30.0
+DRO,America/Denver,US,6515,La Plata County,Colorado,-107.8,37.2
+GUM,Pacific/Guam,GU,282,none,Tamuning,144.8,13.5
+SPN,Pacific/Saipan,MP,196,none,Saipan,145.7,15.1
+SCK,America/Los_Angeles,US,3,San Joaquin County,California,-121.2,37.9
+PVU,America/Denver,US,4491,Utah County,Utah,-111.7,40.2
+RFD,America/Chicago,US,853,Winnebago County,Illinois,-89.2,42.3
+GCK,America/Chicago,US,2883,Finney County,Kansas,-100.7,37.9
+STC,America/Chicago,US,1089,Stearns County,Minnesota,-94.2,45.5
+SMX,America/Los_Angeles,US,177,Santa Barbara County,California,-120.5,34.9
+YAK,America/Yakutat,US,19,none,none,-139.6,59.5
+CDV,America/Anchorage,US,26,none,none,-145.5,60.5
+ADK,America/Adak,US,29,none,none,-176.6,51.9
+HGR,America/New_York,US,675,Franklin County,Pennsylvania,-77.7,39.7
+OWB,America/Chicago,US,396,Daviess County,Kentucky,-87.2,37.7
+OGS,America/New_York,US,269,St. Lawrence County,New York,-75.5,44.7
+PPG,Pacific/Pago_Pago,AS,52,none,Western District,-170.7,-14.3
+OGD,America/Denver,US,4461,Weber County,Utah,-112.0,41.2
+LYH,America/New_York,US,935,Campbell County,Virginia,-79.2,37.3
