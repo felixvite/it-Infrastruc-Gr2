@@ -4,14 +4,20 @@ from marshmallow import Schema, fields, validates, ValidationError
 import pandas as pd
 from FlightData import FlightData
 import joblib
-from catboost import CatBoost
 from datetime import datetime
 import sqlite3
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Load the model from the joblib file
 LOADED_MODEL = joblib.load('Modell/catboost_model.joblib')
 
 app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
+
+# ngrok --> HTTP Tunnel
 
 
 class PriceQuery(Schema):
@@ -125,7 +131,6 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     day_of_month, day_of_week = get_day_of_month_and_week(date)
     origin = location_origin
     destination = location_dest
-    # @Todo Felix Vité - carrier information?
     dep_time_blk = convert_to_block(time)
     distance = get_distance(origin, destination)
 
@@ -133,15 +138,20 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     flight_data = FlightData(day_of_month, day_of_week, origin, destination, carrier,  dep_time_blk, distance)
     new_data = pd.DataFrame(flight_data.get_data())
 
+    # Get the values from the environment
+    ticket_price = float(os.getenv("TICKET_PRICE"))
+    compensation = float(os.getenv("COMPENSATION"))
+
     # Make predictions on the new data
     new_data_probabilities = LOADED_MODEL.predict_proba(new_data)
     # Display the predicted probabilities
     print("Predicted Probabilities:")
     print(new_data_probabilities)
-    insurance_price = new_data_probabilities[0][1] * 350 + 5
+    insurance_price = new_data_probabilities[0][1] * ticket_price + compensation
     print("Insurance Price")
     print(insurance_price)
-    # Marek wollte an dieser Stelle eine Config File haben --> Für Probability 0 und 1 --> Keine Ahnung :D
+    # Config File --> Für Probability 0 und 1 ?
+    # --> Confile --> Wahrscheinlichkeiten dotenv --> Environment Variablen --> cost = 350, base = 5
 
     price_dict = {'price': insurance_price}
 
