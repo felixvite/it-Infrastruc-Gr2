@@ -19,7 +19,6 @@ app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
 
 # ngrok --> HTTP Tunnel
 
-
 class PriceQuery(Schema):
     date = fields.Str(required=True)
     location_origin = fields.Str(required=True)
@@ -140,7 +139,7 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
 
     # Get the values from the environment
     ticket_price = float(os.getenv("TICKET_PRICE"))
-    compensation = float(os.getenv("COMPENSATION"))
+    compensation = float(os.getenv("SERVICE_CHARGE"))
 
     # Make predictions on the new data
     new_data_probabilities = LOADED_MODEL.predict_proba(new_data)
