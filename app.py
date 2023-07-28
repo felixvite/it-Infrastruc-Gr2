@@ -1,6 +1,6 @@
 from apiflask import APIFlask, Schema
-from flask import request
-from marshmallow import Schema, fields, validates, ValidationError
+from flask import jsonify
+from marshmallow import fields, ValidationError
 import pandas as pd
 from FlightData import FlightData
 import joblib
@@ -10,7 +10,6 @@ import os
 from dotenv import load_dotenv
 import math
 
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -19,47 +18,42 @@ LOADED_MODEL = joblib.load('Modell/catboost_model.joblib')
 
 app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
 
+
 class PriceQuery(Schema):
-    date = fields.Str(required=True, metadata={"format": "%Y-%m-%d", "example": "2023-08-15", "description": "The date where the flight takes place"})
-    location_origin = fields.Str(required=True, metadata={"example": "GNV", "description": "The shortcut of the origin location"})
-    location_dest = fields.Str(required=True, metadata={"example": "ATL", "description": "The shortcut of the destination location"})
+    date = fields.Str(required=True, metadata={"format": "%Y-%m-%d", "example": "2023-08-15",
+                                               "description": "The date where the flight takes place"})
+    location_origin = fields.Str(required=True,
+                                 metadata={"example": "GNV", "description": "The shortcut of the origin location"})
+    location_dest = fields.Str(required=True,
+                               metadata={"example": "ATL", "description": "The shortcut of the destination location"})
     carrier = fields.Str(required=True, metadata={"example": "9E", "description": "The shortcut of the air carrier"})
-    time = fields.Str(required=True, metadata={"format": "%H:%M", "example": "00:00", "description": "The time where the flight takes place"})
+    time = fields.Str(required=True, metadata={"format": "%H:%M", "example": "00:00",
+                                               "description": "The time where the flight takes place"})
 
-    @validates('location_origin')
-    def validate_location(self, value):
-        if len(value) != 3:
-            raise ValidationError('Make sure to use the shortcut for the airport. For example, use ATL for Atlanta')
-
-    @validates('location_dest')
-    def validate_location(self, value):
-        if len(value) != 3:
-            raise ValidationError('Make sure to use the shortcut for the airport. For example, use ATL for Atlanta')
-
+# TODO: Write validate function for PriceQuery
 class PriceOut(Schema):
     price = fields.Float(required=True)
+
 
 @app.route('/price', methods=['GET'])
 @app.input(PriceQuery, location='query')
 @app.output(PriceOut, 200)
 @app.doc(summary='Return insurance price',
          description='Return price calculation based on date, location, time and carrier',
-         responses=[400, 404])
+         responses=[200])
+def get_price(query):
+    try:
+        # Perform price calculation logic based on location and date
+        price = price_calculation(query['date'], query['location_origin'], query['location_dest'], query['time'],
+                                  query['carrier'])
+        if price['price'] is None:
+            return jsonify({'error': 'Could not calculate price'})
 
-def get_price(query: PriceQuery):
-    date = request.args.get('date')
-    time = request.args.get('time')
-    location_origin = request.args.get('location_origin')
-    location_dest = request.args.get('location_dest')
-    carrier = request.args.get('carrier')
+        return jsonify(price)
 
-    # Perform price calculation logic based on location and date
-    price = price_calculation(date, location_origin, location_dest, time, carrier)
-
-    if price['price'] is None:
-        return {'error': 'Invalid location or date.'}, 400
-
-    return price, 200
+    except ValidationError as err:
+        error = {'error': err.messages[0]}
+        return jsonify(error)
 
 
 def get_day_of_month_and_week(date_str):
@@ -80,8 +74,8 @@ def convert_to_block(user_time):
 
     # Define time blocks in the same format as in the database
     time_blocks = ['0000-0559', '0600-0659', '0700-0759', '0800-0859', '0900-0959', '1000-1059', '1100-1159',
-                    '1200-1259', '1300-1359', '1400-1459', '1500-1559', '1600-1659', '1700-1759', '1800-1859',
-                    '1900-1959', '2000-2059', '2100-2159', '2200-2259', '2300-2359']
+                   '1200-1259', '1300-1359', '1400-1459', '1500-1559', '1600-1659', '1700-1759', '1800-1859',
+                   '1900-1959', '2000-2059', '2100-2159', '2200-2259', '2300-2359']
 
     # Loop through time_blocks to find the block that contains user_time
     for block in time_blocks:
@@ -112,7 +106,9 @@ def get_distance(origin, destination):
     if data is not None:
         return data[0]
     else:
-        return 'No data found for route from {origin} to {destination}.'.format(origin=origin, destination=destination)
+        raise ValidationError(
+            'No data found for route from {origin} to {destination}.'.format(origin=origin, destination=destination))
+
 
 def price_calculation(date, location_origin, location_dest, time, carrier):
     day_of_month, day_of_week = get_day_of_month_and_week(date)
@@ -122,7 +118,7 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     distance = get_distance(origin, destination)
 
     # flight_data = FlightData(21, 1, 'DL', 'THL', 'ATL', '1500-1559', 223.0)
-    flight_data = FlightData(day_of_month, day_of_week, origin, destination, carrier,  dep_time_blk, distance)
+    flight_data = FlightData(day_of_month, day_of_week, origin, destination, carrier, dep_time_blk, distance)
     new_data = pd.DataFrame(flight_data.get_data())
 
     # Get the values from the environment
@@ -144,6 +140,7 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     price_dict = {'price': insurance_price}
 
     return price_dict
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
