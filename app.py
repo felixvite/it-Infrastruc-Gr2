@@ -1,5 +1,5 @@
 from apiflask import APIFlask, Schema
-from flask import request, redirect
+from flask import request
 from marshmallow import Schema, fields, validates, ValidationError
 import pandas as pd
 from FlightData import FlightData
@@ -8,6 +8,8 @@ from datetime import datetime
 import sqlite3
 import os
 from dotenv import load_dotenv
+import math
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -17,25 +19,22 @@ LOADED_MODEL = joblib.load('Modell/catboost_model.joblib')
 
 app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
 
-# ngrok --> HTTP Tunnel
-
 class PriceQuery(Schema):
-    date = fields.Str(required=True)
-    location_origin = fields.Str(required=True)
-    location_dest = fields.Str(required=True)
-    carrier = fields.Str(required=True)
-    time = fields.Str(required=True)
+    date = fields.Str(required=True, metadata={"format": "%Y-%m-%d", "example": "2023-08-15", "description": "The date where the flight takes place"})
+    location_origin = fields.Str(required=True, metadata={"example": "GNV", "description": "The shortcut of the origin location"})
+    location_dest = fields.Str(required=True, metadata={"example": "ATL", "description": "The shortcut of the destination location"})
+    carrier = fields.Str(required=True, metadata={"example": "9E", "description": "The shortcut of the air carrier"})
+    time = fields.Str(required=True, metadata={"format": "%H:%M", "example": "00:00", "description": "The time where the flight takes place"})
 
-    """@validates('location')
+    @validates('location_origin')
     def validate_location(self, value):
-        if value not in ['NewYork', 'Boston']:
-            raise ValidationError('Invalid location.')
+        if len(value) != 3:
+            raise ValidationError('Make sure to use the shortcut for the airport. For example, use ATL for Atlanta')
 
-    @validates('date')
-    def validate_date(self, value):
-        if value not in ['today', 'tomorrow']:
-            raise ValidationError('Invalid date.') """
-
+    @validates('location_dest')
+    def validate_location(self, value):
+        if len(value) != 3:
+            raise ValidationError('Make sure to use the shortcut for the airport. For example, use ATL for Atlanta')
 
 class PriceOut(Schema):
     price = fields.Float(required=True)
@@ -44,8 +43,8 @@ class PriceOut(Schema):
 @app.input(PriceQuery, location='query')
 @app.output(PriceOut, 200)
 @app.doc(summary='Return insurance price',
-         description='Return price calculation based on location and date.',
-         responses=[204, 400, 404])
+         description='Return price calculation based on date, location, time and carrier',
+         responses=[400, 404])
 
 def get_price(query: PriceQuery):
     date = request.args.get('date')
@@ -71,14 +70,6 @@ def get_day_of_month_and_week(date_str):
     day_of_month = date_object.day
     day_of_week = date_object.weekday() + 1
 
-    """
-    Example usage:
-    date_str = '2023-07-26'
-    day_of_month, day_of_week = get_day_of_month_and_week(date_str)
-    print(f'Day of Month: {day_of_month}')
-    print(f'Day of Week: {day_of_week}')
-    """
-
     return day_of_month, day_of_week
 
 
@@ -89,25 +80,22 @@ def convert_to_block(user_time):
 
     # Define time blocks in the same format as in the database
     time_blocks = ['0000-0559', '0600-0659', '0700-0759', '0800-0859', '0900-0959', '1000-1059', '1100-1159',
-                   '1200-1259', '1300-1359', '1400-1459', '1500-1559', '1600-1659', '1700-1759', '1800-1859',
-                   '1900-1959', '2000-2059', '2100-2159', '2200-2259', '2300-2359']
+                    '1200-1259', '1300-1359', '1400-1459', '1500-1559', '1600-1659', '1700-1759', '1800-1859',
+                    '1900-1959', '2000-2059', '2100-2159', '2200-2259', '2300-2359']
 
     # Loop through time_blocks to find the block that contains user_time
     for block in time_blocks:
         start, end = block.split('-')
         start_hours, start_minutes = int(start[:2]), int(start[2:])
-        end_hours, end_minutes = int(end[:2]), int(end[2:])
+        end_hours, end_minutes = int(end[:2]), (int(end[2:]) + 1)
 
         # Convert block start and end times to total minutes
         start_total = start_hours * 60 + start_minutes
         end_total = end_hours * 60 + end_minutes
-
         # Check if user_time falls within this block
         if start_total <= total_minutes < end_total:
             return block
 
-    # Return None if user_time does not fall within any block
-    return None
 
 def get_distance(origin, destination):
     # Create a connection to the SQLite database
@@ -124,7 +112,7 @@ def get_distance(origin, destination):
     if data is not None:
         return data[0]
     else:
-        return 'No data found for route from {origin} to {destination}.'.format(origin=origin, destination=destination), 404
+        return 'No data found for route from {origin} to {destination}.'.format(origin=origin, destination=destination)
 
 def price_calculation(date, location_origin, location_dest, time, carrier):
     day_of_month, day_of_week = get_day_of_month_and_week(date)
@@ -147,6 +135,7 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     print("Predicted Probabilities:")
     print(new_data_probabilities)
     insurance_price = new_data_probabilities[0][1] * ticket_price + compensation
+    insurance_price = math.ceil(insurance_price * 100) / 100
     print("Insurance Price")
     print(insurance_price)
     # Config File --> Für Probability 0 und 1 ?
@@ -157,4 +146,4 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     return price_dict
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
