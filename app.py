@@ -1,6 +1,6 @@
 from apiflask import APIFlask, Schema
 from flask import jsonify
-from marshmallow import fields, ValidationError
+from marshmallow import fields, ValidationError, validates
 import pandas as pd
 from FlightData import FlightData
 import joblib
@@ -16,23 +16,72 @@ load_dotenv()
 # Load the model from the joblib file
 LOADED_MODEL = joblib.load('Modell/catboost_model.joblib')
 
-app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
-
 
 class PriceQuery(Schema):
     date = fields.Str(required=True, metadata={"format": "%Y-%m-%d", "example": "2023-08-15",
-                                               "description": "The date where the flight takes place"})
+                                               "description": "The date where the flight is scheduled to depart"})
     location_origin = fields.Str(required=True,
-                                 metadata={"example": "GNV", "description": "The shortcut of the origin location"})
+                                 metadata={"example": "GNV", "description": "The IATA airport code of the origin "
+                                                                            "location"})
     location_dest = fields.Str(required=True,
-                               metadata={"example": "ATL", "description": "The shortcut of the destination location"})
-    carrier = fields.Str(required=True, metadata={"example": "9E", "description": "The shortcut of the air carrier"})
+                               metadata={"example": "ATL", "description": "The IATA airport code of the destination "
+                                                                          "location"})
+    carrier = fields.Str(required=True, metadata={"example": "9E", "description": "The IATA carrier code of the air "
+                                                                                  "carrier"})
     time = fields.Str(required=True, metadata={"format": "%H:%M", "example": "00:00",
-                                               "description": "The time where the flight takes place"})
+                                               "description": "The time where the flight is scheduled to depart"})
 
-# TODO: Write validate function for PriceQuery
+    @validates('date')
+    def validate_date(self, value):
+        if len(value) != 10:
+            raise ValidationError('Make sure to use the right format for time.- Format: %Y-%m-%d - Example: 2023-08-15')
+        elif value[4] != '-' or value[7] != '-':
+            raise ValidationError('Make sure to use the right format for time.- Format: %Y-%m-%d - Example: 2023-08-15')
+        try:
+            year = int(value[:4])
+            month = int(value[5:7])
+            day = int(value[8:])
+            if year < 2000 or month > 12 or month < 1 or day > 31 or day < 1:
+                raise ValidationError('Make sure to use the right format for time. - Format: %Y-%m-%d - Example: '
+                                      '2023-08-15')
+        except ValueError:
+            raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+
+    @validates('location_origin')
+    def validate_location_origin(self, value):
+        if len(value) != 3:
+            raise ValidationError('Make sure to use the IATA-Codes for the airport. For example, use ATL for Atlanta')
+
+    @validates('location_dest')
+    def validate_location_dest(self, value):
+        if len(value) != 3:
+            raise ValidationError('Make sure to use the IATA-Codes for the airport. For example, use ATL for Atlanta')
+
+    @validates('carrier')
+    def validate_carrier(self, value):
+        if len(value) != 2:
+            raise ValidationError('Make sure to use the IATA-Codes for carrier. - Format:9E - Example:Endeavor Air')
+
+    @validates('time')
+    def validate_time(self, value):
+        if len(value) != 5:
+            raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+        elif value[2] != ':':
+            raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+        try:
+            hour = int(value[:2])
+            minute = int(value[3:])
+            if hour > 23 or minute > 59:
+                raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+        except ValueError:
+            raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+
+
 class PriceOut(Schema):
     price = fields.Float(required=True)
+
+
+app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
 
 
 @app.route('/price', methods=['GET'])
@@ -61,6 +110,7 @@ def get_day_of_month_and_week(date_str):
     date_object = datetime.strptime(date_str, '%Y-%m-%d')
 
     # Get the day of the month and day of the week (Monday is 0 and Sunday is 6)
+    # Add 1 to day_of_week to make Monday 1 and Sunday 7
     day_of_month = date_object.day
     day_of_week = date_object.weekday() + 1
 
@@ -134,8 +184,6 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     insurance_price = math.ceil(insurance_price * 100) / 100
     print("Insurance Price")
     print(insurance_price)
-    # Config File --> Für Probability 0 und 1 ?
-    # --> Confile --> Wahrscheinlichkeiten dotenv --> Environment Variablen --> cost = 350, base = 5
 
     price_dict = {'price': insurance_price}
 
@@ -143,4 +191,4 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=80)
