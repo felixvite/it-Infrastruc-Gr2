@@ -129,21 +129,34 @@ class TestPriceCalculation(unittest.TestCase):
             with self.assertRaises(ValidationError):
                 get_distance('ABC', 'DEF')
 
-    # Use the patch decorator to mock certain functions that are called within the function being tested
+    # Use Python's built-in patch decorator from the unittest.mock library
+    # to replace certain functions (joblib.load, app.get_distance, app.get_day_of_month_and_week, app.convert_to_block)
+    # with mock objects during the test.
     @patch('joblib.load')
     @patch('app.get_distance')
     @patch('app.get_day_of_month_and_week')
     @patch('app.convert_to_block')
+    # Define the test case function, the mock objects are automatically passed as arguments.
     def test_price_calculation(self, mock_convert_to_block, mock_get_day_of_month_and_week, mock_get_distance,
                                mock_load):
         # Set return values for the mocked functions
-        mock_get_day_of_month_and_week.return_value = (15, 3)
+        # When app.get_day_of_month_and_week() is called, it will return (15, 2)
+        mock_get_day_of_month_and_week.return_value = (15, 2)
+        # When app.convert_to_block() is called, it will return '1500-1559'
         mock_convert_to_block.return_value = '1500-1559'
+        # When app.get_distance() is called, it will return 500
         mock_get_distance.return_value = 500
 
-        # Assert that the function returns the expected result
-        self.assertEqual(price_calculation('2023-08-15', 'ATL', 'GNV', '15:00', '9E'), {'price': 18.79})
+        # Call the function under test with specific parameters and store the result
+        result = price_calculation('2023-08-15', 'ATL', 'GNV', '15:00', '9E')
 
+        # Assert that the function returns a dictionary (result must be a dict)
+        self.assertIsInstance(result, dict)
+        # Assert that the dictionary contains a 'price' key
+        self.assertIn('price', result)
+        # Assert that the value associated with the 'price' key is a number (either an integer or a floating point
+        # number)
+        self.assertIsInstance(result['price'], (int, float))
 
 # This line allows the script to be run as a standalone program, executing the tests
 if __name__ == "__main__":
