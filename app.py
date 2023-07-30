@@ -84,7 +84,7 @@ class PriceQuery(Schema):
 
 
 class PriceOut(Schema):
-    price = fields.Float(required=True)
+    price = fields.Float(required=True, metadata={"example": 52.34})
 
 
 app = APIFlask(__name__, title='Insurance price calculation API', version='1.0')
