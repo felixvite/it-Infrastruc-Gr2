@@ -14,7 +14,11 @@ import math
 load_dotenv()
 
 # Load the model from the joblib file
-LOADED_MODEL = joblib.load('Modell/catboost_model.joblib')
+# Determine the application's base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Construct the path to the joblib file
+joblib_file = os.path.join(BASE_DIR, 'Modell', 'catboost_model.joblib')
+LOADED_MODEL = joblib.load(joblib_file)
 
 
 class PriceQuery(Schema):
@@ -38,14 +42,12 @@ class PriceQuery(Schema):
         elif value[4] != '-' or value[7] != '-':
             raise ValidationError('Make sure to use the right format for time.- Format: %Y-%m-%d - Example: 2023-08-15')
         try:
-            year = int(value[:4])
-            month = int(value[5:7])
-            day = int(value[8:])
-            if year < 2000 or month > 12 or month < 1 or day > 31 or day < 1:
-                raise ValidationError('Make sure to use the right format for time. - Format: %Y-%m-%d - Example: '
-                                      '2023-08-15')
+            datetime.strptime(value, '%Y-%m-%d')
         except ValueError:
-            raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
+            raise ValidationError('Incorrect data format, should be YYYY-MM-DD')
+        year = int(value[:4])
+        if year < 2019:
+            raise ValidationError('Year should not be less than 2019')
 
     @validates('location_origin')
     def validate_location_origin(self, value):
@@ -59,8 +61,12 @@ class PriceQuery(Schema):
 
     @validates('carrier')
     def validate_carrier(self, value):
+        valid_carrier = ['9E', 'AA', 'MQ', 'G4', 'OH', 'B6', 'YV', 'EV', 'F9', 'YX', 'HA',
+                         'NK', 'OO', 'WN', 'AS', 'UA', 'DL']
         if len(value) != 2:
-            raise ValidationError('Make sure to use the IATA-Codes for carrier. - Format:9E - Example:Endeavor Air')
+            raise ValidationError('Make sure to use the IATA-Codes for carrier. - Format:9E - Example: Endeavor Air')
+        elif value not in valid_carrier:
+            raise ValidationError('Make sure to use a valid US air carrier - Format: 9E - Example: Endeavor Air')
 
     @validates('time')
     def validate_time(self, value):
