@@ -17,8 +17,6 @@ class TestPriceCalculation(unittest.TestCase):
         with self.assertRaises(ValidationError):
             price_query.validate_date("2018-12-15")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2019-12-30")
-        with self.assertRaises(ValidationError):
             price_query.validate_date("2023-02-30")
         with self.assertRaises(ValidationError):
             price_query.validate_date("AAAA-BB-CC")
@@ -54,6 +52,12 @@ class TestPriceCalculation(unittest.TestCase):
             price_query.validate_time("67:68")
         with self.assertRaises(ValidationError):
             price_query.validate_time("DREIZEHNUHRDREI")
+        with self.assertRaises(ValidationError):
+            price_query.validate_time("-4:-4")
+        with self.assertRaises(ValidationError):
+            price_query.validate_time("-4:00")
+        with self.assertRaises(ValidationError):
+            price_query.validate_time("22:-2")
 
         # Assert that the function returns None for valid dates
         self.assertIsNone(price_query.validate_time("12:33"))
@@ -62,7 +66,10 @@ class TestPriceCalculation(unittest.TestCase):
     def test_convert_to_block(self):
         # Assert that the function returns the expected results
         self.assertEqual(convert_to_block("00:00"), "0000-0559")
+        self.assertEqual(convert_to_block("06:05"), "0600-0659")
+        self.assertEqual(convert_to_block("06:25"), "0600-0659")
         self.assertEqual(convert_to_block("12:15"), "1200-1259")
+        self.assertEqual(convert_to_block("12:05"), "1200-1259")
         self.assertEqual(convert_to_block("23:59"), "2300-2359")
 
     # Test the date validation

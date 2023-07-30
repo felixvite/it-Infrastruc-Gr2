@@ -77,7 +77,7 @@ class PriceQuery(Schema):
         try:
             hour = int(value[:2])
             minute = int(value[3:])
-            if hour > 23 or minute > 59:
+            if hour > 23 or minute > 59 or hour < 0 or minute < 0:
                 raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
         except ValueError:
             raise ValidationError('Make sure to use the time in right format - Format: %H:%M - Example:00:00')
