@@ -11,7 +11,7 @@
 # 1. Download the code
 # 2. install requirements.txt
 # 3. create .env with 
-# 4. TICKET_PRICE=350
-# 5. SERVICE_CHARGE=5
+# TICKET_PRICE=350
+# SERVICE_CHARGE=5
 # 6. safe .env
 # start the application
