@@ -14,8 +14,6 @@ class TestPriceCalculation(unittest.TestCase):
 
         # Assert that the function raises a ValidationError for invalid dates
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-15-08")
-        with self.assertRaises(ValidationError):
             price_query.validate_date("2019-13-30")
         with self.assertRaises(ValidationError):
             price_query.validate_date("2018-12-15")
@@ -23,6 +21,8 @@ class TestPriceCalculation(unittest.TestCase):
             price_query.validate_date("2023-02-30")
         with self.assertRaises(ValidationError):
             price_query.validate_date("AAAA-BB-CC")
+        with self.assertRaises(ValidationError):
+            price_query.validate_date("13FEBRUARY2023")
 
         # Assert that the function returns None for valid dates
         self.assertIsNone(price_query.validate_date("2023-12-15"))
@@ -42,18 +42,20 @@ class TestPriceCalculation(unittest.TestCase):
 
         # Assert that the function raises a ValidationError for invalid dates
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-15-08")
+            price_query.validate_time("ABC")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2019-13-30")
+            price_query.validate_time("00:000")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2018-12-15")
+            price_query.validate_time("AB:CD")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-02-30")
+            price_query.validate_time("00:7A")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("AAAA-BB-CC")
+            price_query.validate_time("67:68")
+        with self.assertRaises(ValidationError):
+            price_query.validate_time("DREIZEHNUHRDREI")
 
         # Assert that the function returns None for valid dates
-        self.assertIsNone(price_query.validate_date("2023-12-15"))
+        self.assertIsNone(price_query.validate_time("12:33"))
 
     # Test the convert_to_block function
     def test_convert_to_block(self):
@@ -69,18 +71,12 @@ class TestPriceCalculation(unittest.TestCase):
 
         # Assert that the function raises a ValidationError for invalid dates
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-15-08")
+            price_query.validate_location_origin("Boston")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2019-13-30")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("2018-12-15")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-02-30")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("AAAA-BB-CC")
+            price_query.validate_location_origin("9E")
 
         # Assert that the function returns None for valid dates
-        self.assertIsNone(price_query.validate_date("2023-12-15"))
+        self.assertIsNone(price_query.validate_location_origin("JFK"))
 
     # Test the date validation
     def test_validate_location_dest(self):
@@ -89,18 +85,12 @@ class TestPriceCalculation(unittest.TestCase):
 
         # Assert that the function raises a ValidationError for invalid dates
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-15-08")
+            price_query.validate_location_dest("Boston")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2019-13-30")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("2018-12-15")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-02-30")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("AAAA-BB-CC")
+            price_query.validate_location_dest("9E")
 
         # Assert that the function returns None for valid dates
-        self.assertIsNone(price_query.validate_date("2023-12-15"))
+        self.assertIsNone(price_query.validate_location_dest("JFK"))
 
     # Test the date validation
     def test_validate_carrier(self):
@@ -109,18 +99,16 @@ class TestPriceCalculation(unittest.TestCase):
 
         # Assert that the function raises a ValidationError for invalid dates
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-15-08")
+            price_query.validate_carrier("Deutsche Bahn")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2019-13-30")
+            price_query.validate_carrier("GNV")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2018-12-15")
+            price_query.validate_carrier("AB")
         with self.assertRaises(ValidationError):
-            price_query.validate_date("2023-02-30")
-        with self.assertRaises(ValidationError):
-            price_query.validate_date("AAAA-BB-CC")
+            price_query.validate_carrier("Endeavor Air")
 
         # Assert that the function returns None for valid dates
-        self.assertIsNone(price_query.validate_date("2023-12-15"))
+        self.assertIsNone(price_query.validate_carrier("9E"))
 
     # Test the get_distance function
     def test_get_distance(self):
@@ -136,6 +124,8 @@ class TestPriceCalculation(unittest.TestCase):
             # Mock for invalid airport codes
             mock_connect.return_value.cursor.return_value.fetchone.return_value = None
             # Assert that the function raises a ValidationError
+            with self.assertRaises(ValidationError):
+                get_distance('jfk', 'atl')
             with self.assertRaises(ValidationError):
                 get_distance('ABC', 'DEF')
 

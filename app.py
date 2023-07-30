@@ -163,7 +163,7 @@ def get_distance(origin, destination):
         return data[0]
     else:
         raise ValidationError(
-            'No data found for route from {origin} to {destination}.'.format(origin=origin, destination=destination))
+            'No data found for route from {origin} to {destination}. Make sure to use IATA Code in uppercase letters'.format(origin=origin, destination=destination))
 
 
 def price_calculation(date, location_origin, location_dest, time, carrier):
