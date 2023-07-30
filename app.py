@@ -163,7 +163,8 @@ def get_distance(origin, destination):
         return data[0]
     else:
         raise ValidationError(
-            'No data found for route from {origin} to {destination}. Make sure to use IATA Code in uppercase letters'.format(origin=origin, destination=destination))
+            'No data found for route from {origin} to {destination}. Make sure to use IATA Code in uppercase letters'.
+            format(origin=origin, destination=destination))
 
 
 def price_calculation(date, location_origin, location_dest, time, carrier):
@@ -187,10 +188,10 @@ def price_calculation(date, location_origin, location_dest, time, carrier):
     print("Predicted Probabilities:")
     print(new_data_probabilities)
     insurance_price = new_data_probabilities[0][1] * ticket_price + compensation
+    print(insurance_price)
     insurance_price = math.ceil(insurance_price * 100) / 100
     print("Insurance Price")
     print(insurance_price)
-
     price_dict = {'price': insurance_price}
 
     return price_dict

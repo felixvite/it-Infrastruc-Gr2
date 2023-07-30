@@ -1,4 +1,3 @@
-# Import the necessary modules
 import unittest
 from app import convert_to_block, PriceQuery, price_calculation, get_day_of_month_and_week, get_distance
 from marshmallow import ValidationError
@@ -17,6 +16,8 @@ class TestPriceCalculation(unittest.TestCase):
             price_query.validate_date("2019-13-30")
         with self.assertRaises(ValidationError):
             price_query.validate_date("2018-12-15")
+        with self.assertRaises(ValidationError):
+            price_query.validate_date("2019-12-30")
         with self.assertRaises(ValidationError):
             price_query.validate_date("2023-02-30")
         with self.assertRaises(ValidationError):
@@ -157,6 +158,7 @@ class TestPriceCalculation(unittest.TestCase):
         # Assert that the value associated with the 'price' key is a number (either an integer or a floating point
         # number)
         self.assertIsInstance(result['price'], (int, float))
+
 
 # This line allows the script to be run as a standalone program, executing the tests
 if __name__ == "__main__":
