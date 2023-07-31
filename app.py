@@ -1,4 +1,4 @@
-from apiflask import APIFlask, Schema
+from apiflask import APIFlask, Schema, abort
 from flask import jsonify
 from marshmallow import fields, ValidationError, validates
 import pandas as pd
@@ -102,13 +102,12 @@ def get_price(query):
         price = price_calculation(query['date'], query['location_origin'], query['location_dest'], query['time'],
                                   query['carrier'])
         if price['price'] is None:
-            return jsonify({'error': 'Could not calculate price'})
+            return jsonify({'Error': 'Could not calculate price'})
 
         return jsonify(price)
 
     except ValidationError as err:
-        error = {'error': err.messages[0]}
-        return jsonify(error)
+        abort(422, message=err.messages[0])
 
 
 def get_day_of_month_and_week(date_str):

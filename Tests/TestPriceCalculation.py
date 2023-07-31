@@ -125,9 +125,9 @@ class TestPriceCalculation(unittest.TestCase):
             # Mock for valid airport codes
             mock_connect.return_value = Mock()
             mock_connect.return_value.cursor.return_value = Mock()
-            mock_connect.return_value.cursor.return_value.fetchone.return_value = (422,)
+            mock_connect.return_value.cursor.return_value.fetchone.return_value = (1000,)
             # Assert that the function returns the expected result
-            self.assertEqual(get_distance('ATL', 'GNV'), 422)
+            self.assertEqual(get_distance('ATL', 'GNV'), 1000)
 
             # Mock for invalid airport codes
             mock_connect.return_value.cursor.return_value.fetchone.return_value = None
@@ -153,7 +153,7 @@ class TestPriceCalculation(unittest.TestCase):
         # When app.convert_to_block() is called, it will return '1500-1559'
         mock_convert_to_block.return_value = '1500-1559'
         # When app.get_distance() is called, it will return 500
-        mock_get_distance.return_value = 500
+        mock_get_distance.return_value = 1000
 
         # Call the function under test with specific parameters and store the result
         result = price_calculation('2023-08-15', 'ATL', 'GNV', '15:00', '9E')
